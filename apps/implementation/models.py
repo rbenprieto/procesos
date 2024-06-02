@@ -5,9 +5,13 @@ class Teams(models.Model):
     id = models.AutoField(primary_key=True, editable=False, unique=True)
     name = models.CharField(max_length=255)
 
+    def __str__(self) -> str:
+        return self.name
+
 
 class Ticket(models.Model):
     id = models.AutoField(primary_key=True, editable=False, unique=True)
+    creation_date = models.DateTimeField(auto_now_add=True)
     ticket_number = models.IntegerField()
     date_generation = models.DateField()
     client_name = models.CharField(max_length=255)
@@ -16,3 +20,9 @@ class Ticket(models.Model):
     category_problem = models.CharField(max_length=25)
     description = models.TextField()
     team = models.ForeignKey(Teams, on_delete=models.SET_NULL, null=True, blank=True)
+    status = models.CharField(max_length=255, null=True, blank=True)
+    solucionado_cs = models.BooleanField(default=False)
+    solucionado_cs_and_ma = models.BooleanField(default=False)
+
+    def __str__(self) -> str:
+        return str(self.ticket_number)
