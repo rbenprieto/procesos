@@ -20,7 +20,7 @@ if RENDER_EXTERNAL_HOSTNAME:
 
 DATABASES = {
     "default": dj_database_url.config(
-        default=f"postgresql://{os.environ.get('USER_PROCESOS')}:{os.environ.get('PASSWORD_PROCESOS')}@{os.environ.get('HOST_PROCESOS')}:{os.environ.get('PORT_PROCESOS')}/{os.environ.get('NAME_PROCESOS')}",
+        default=os.environ.get("DATABASE_URL"),
         conn_max_age=1000,
     )
 }
