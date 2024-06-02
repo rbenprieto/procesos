@@ -22,7 +22,13 @@ class Ticket(models.Model):
     team = models.ForeignKey(Teams, on_delete=models.SET_NULL, null=True, blank=True)
     status = models.CharField(max_length=255, null=True, blank=True)
     solucionado_cs = models.BooleanField(default=False)
+    cs_management_date = models.DateTimeField(null=True, blank=True)
     solucionado_cs_and_ma = models.BooleanField(default=False)
+    cs_and_ma_management_date = models.DateTimeField(null=True, blank=True)
+    assigned_date = models.DateTimeField(null=True, blank=True)
+    review_status_date = models.DateTimeField(null=True, blank=True)
+    solution_date = models.DateTimeField(null=True, blank=True)
+    closed_date = models.DateTimeField(null=True, blank=True)
 
     def __str__(self) -> str:
         return str(self.ticket_number)
